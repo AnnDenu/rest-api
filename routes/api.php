@@ -28,6 +28,8 @@ Route::prefix('v1')
     Route::apiResource('products', ProductController::class);
 
     Route::apiResource('categories', CategoryController::class);
+   
+    Route::apiResource('todos', ProductController::class);
     //связь один ко многим
     Route::get('category/{category}/products', [CategoryProductController::class, 'index']);
     Route::post('categories/{category}/products', [CategoryProductController::class, 'store']);
@@ -37,10 +39,10 @@ Route::prefix('v1')
     Route::post('/products',[ProductsController::class, 'store']);
     Route::put('/products/{product}',[ProductsController::class, 'update']);
     Route::delete('/products/{product}', [ProductsController::class, 'delete']);
-});
+})->middleware('auth:sanctum');
 //регистрация, авторизация и выход
     Route::group(['namespace' => 'api'], function () {
-        Route::post('/register', [AuthController::class, 'register']);
-        Route::post('/login', [AuthController::class, 'login']);
+        Route::post('/auth/register', [AuthController::class, 'register']);
+        Route::post('/auth/login', [AuthController::class, 'login']);
         Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 });
