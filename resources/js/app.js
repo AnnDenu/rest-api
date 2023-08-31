@@ -6,7 +6,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
-
+import App from './App.vue'
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -36,4 +36,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+CreateApp(App).mount('#app');
